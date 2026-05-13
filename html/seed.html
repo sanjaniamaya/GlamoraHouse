@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glamora Database Seeder</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #black; color: #white; display:flex; justify-content:center; align-items:center; height:100vh; text-align:center; background-color: #121212; color: #fff; }
+        .box { padding: 40px; border-radius: 20px; border: 2px solid #bd00ff; background: rgba(0,0,0,0.8); box-shadow: 0 0 20px #bd00ff; }
+        h1 { margin-bottom: 20px; }
+        #status { font-weight: bold; color: #ffd700; margin-top:20px;}
+        #successText { display: none; color: #00ff88; margin-top:20px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Glamora House Data Seeder</h1>
+        <p>DO NOT CLOSE THIS PAGE. Injecting high-quality Sri Lankan data to Firestore...</p>
+        <div id="status">Preparing...</div>
+        <div id="successText">
+            <h2>✅ Data Injection Complete!</h2>
+            <p>You may now close this tab, refresh your Admin panel and Homepage, and delete <b>seed.html</b> from your project folders.</p>
+            <a href="index.html" style="color:#bd00ff; text-decoration:none; margin-top:15px; display:inline-block; border:1px solid #bd00ff; padding:10px 20px; border-radius:5px;">Go to Website</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db, collection, addDoc, serverTimestamp } from '../js/firebase-config.js';
+
+        const services = [
+            { title: "Hair Styling & Cut", category: "hair", price: "Starts at Rs. 2,500", description: "Expert cuts, coloring, and keratin treatments tailored to your face shape.", image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800" },
+            { title: "Gold Radiance Facial", category: "face", price: "Rs. 6,000", description: "Rejuvenating facials using organic gold extracts for an instant glow.", image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800" },
+            { title: "Traditional Bridal Dressing", category: "face", price: "Custom Package", description: "Complete Kandyan & Western bridal dressing with master makeup artistry.", image: "https://images.unsplash.com/photo-1587156080682-6f5304736d13?w=500&auto=format&fit=crop&q=60" },
+            { title: "Ayurvedic Body Massage", category: "body", price: "Rs. 5,500", description: "Deep relaxing tissue therapies using pure sandalwood and essential oils.", image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800" },
+            { title: "Keratin Smooth Treatment", category: "hair", price: "Rs. 15,000", description: "Professional permanent hair straightening and deep nourishment.", image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&auto=format&fit=crop&q=60" },
+            { title: "Premium Nail Artistry", category: "body", price: "Rs. 3,000", description: "Acrylic extensions, gel polish, and beautiful custom nail art.", image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800" },
+            { title: "Event & Party Makeup", category: "face", price: "Rs. 4,500", description: "Glamorous, long-lasting makeup for photoshoots, parties, and events.", image: "https://images.unsplash.com/photo-1629397662621-0d4b8e82801f?w=500&auto=format&fit=crop&q=60" },
+            { title: "Threading & Cleanup", category: "face", price: "Rs. 1,500", description: "Precise eyebrow threading, shaping, and upper lip deep cleanup.", image: "https://images.unsplash.com/photo-1512496015851-a1c8ddc1cc15?q=80&w=800" }
+        ];
+
+        const staff = [
+            { name: "Amara Perera", role: "Senior Hair Stylist", bio: "10+ years experience in creative coloring and precise cuts. Certified by L'Oreal.", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800" },
+            { name: "Kasun Silva", role: "Skin Therapist", bio: "Expert Skin Therapist. Specializes in organic facials and Ayurvedic anti-aging treatments.", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800" },
+            { name: "Nimali De Soysa", role: "Bridal Expert", bio: "Professional Bridal Artist. 200+ successful bridal projects. Award-winning makeup artist.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" },
+            { name: "Rohan Dias", role: "Master Colorist", bio: "Master Colorist. Balayage and Ombre specialist with international salon training.", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800" },
+            { name: "Soniya Raj", role: "Nail Technician", bio: "Nail Art Technician. Expert in Gel, Acrylic and custom traditional nail art designs.", image: "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?q=80&w=800" },
+            { name: "Dilshan Jay", role: "Ayurvedic Massage", bio: "Certified Therapist. Specializing in deep tissue and ancient Sri Lankan Ayurvedic therapies.", image: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?q=80&w=800" },
+            { name: "Tanya Fernando", role: "Makeup Artist", bio: "Event Makeup Artist. Renowned for natural glamour and perfect photoshoot makeup.", image: "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?q=80&w=800" },
+            { name: "Malithi Bandara", role: "Hair Care Expert", bio: "Treatments specialist. Restores damaged hair with nourishing organic masks.", image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=800" }
+        ];
+
+        const feedbacks = [
+            { customerName: "Kamala Dias", service: "Keratin Smooth Treatment", staff: "Amara Perera", rating: 5, comment: "Absolutely stunning experience! The neon aesthetics and the professionalism of Amara are unmatched in Sri Lanka. My hair has never looked better.", approved: true },
+            { customerName: "Nimasha Dewmi", service: "Gold Radiance Facial", staff: "Kasun Silva", rating: 5, comment: "The Gold Facial is a must-try. Relaxing atmosphere, skilled therapists, and I walked out glowing. Highly recommend Glamora House.", approved: true },
+            { customerName: "Kavindi Maneesha", service: "Traditional Bridal Dressing", staff: "Nimali De Soysa", rating: 5, comment: "Best bridal service in town. Nimali understood exactly what I wanted for my big day. The makeup was flawless, traditional, and lasted all night.", approved: true },
+            { customerName: "Sunethra Wickramasuriya", service: "Ayurvedic Body Massage", staff: "Dilshan Jay", rating: 4, comment: "A very relaxing experience. Dilshan's Ayurvedic technique helped relieve all my stressful knots. The salon environment is very premium.", approved: true },
+            { customerName: "Chamari Atapattu", service: "Premium Nail Artistry", staff: "Soniya Raj", rating: 5, comment: "Soniya did an amazing job on my acrylics. The attention to detail is superb. I will definitely be coming back here for my regular touch-ups!", approved: true }
+        ];
+
+        async function seedDatabase() {
+            const status = document.getElementById('status');
+            const successText = document.getElementById('successText');
+            
+            try {
+                // To avoid massive spam, wait 1 second before starting so UI mounts
+                await new Promise(r => setTimeout(r, 1000));
+
+                status.innerText = "⏳ Pushing 8 Services to Database...";
+                for(let s of services) { 
+                    await addDoc(collection(db, "services"), {...s, createdAt: serverTimestamp()}); 
+                }
+                
+                status.innerText = "⏳ Pushing 8 Staff Members to Database...";
+                for(let s of staff) { 
+                    await addDoc(collection(db, "staff"), {...s, createdAt: serverTimestamp()}); 
+                }
+                
+                status.innerText = "⏳ Pushing 5 Pre-Approved Feedbacks to Database...";
+                for(let f of feedbacks) { 
+                    await addDoc(collection(db, "feedbacks"), {...f, createdAt: serverTimestamp(), userId: "adminSeeder", bookingId: "generated"}); 
+                }
+                
+                status.style.display = 'none';
+                successText.style.display = 'block';
+                
+            } catch (error) {
+                status.innerHTML = `<span style="color:red">❌ ERROR: ${error.message}</span> <br><br>Make sure you updated your Firebase Rules first!`;
+            }
+        }
+        
+        seedDatabase();
+    </script>
+</body>
+</html>

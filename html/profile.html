@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | GLAMORA HOUSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body class="animated-bg">
+
+    <div class="nav-wrapper" id="navbar">
+        <nav>
+            <a href="index.html" class="logo">GLAMORA HOUSE</a>
+            <div class="nav-links" id="navLinks">
+                <div class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+                <a href="index.html#about">About</a>
+                <a href="services.html" >Services</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#staff">Staff</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="btn-login logout-link" style="border-color: #ff4444; color: #ff4444;">Logout</a>
+                <a href="index.html#contact" class="btn-book">Book Now</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+
+    <div class="profile-section">
+        <div class="dashboard-grid">
+            
+            <div class="profile-card">
+                <div class="profile-pic-container">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60" class="profile-pic" alt="User">
+                    <div class="change-pic-btn"><i class="fas fa-camera"></i></div>
+                </div>
+                <h2 id="display-name">Loading...</h2>
+                <span>Member</span>
+
+                <div class="edit-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="profile-input" id="p_name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="profile-input" id="p_email" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="profile-input" id="p_phone" disabled>
+                    </div>
+
+                    <button class="btn-edit" id="editBtn" onclick="enableEdit()">Edit Details</button>
+                    <button class="btn-save" id="saveBtn" onclick="saveProfile()">Save Changes</button>
+                    
+                    <div class="btn-logout logout-link">Sign Out</div>
+                </div>
+            </div>
+
+            <div class="dashboard-right">
+                <div class="bookings-container mb-4">
+                    <h3>My Bookings</h3>
+                    <div id="booking-list">
+                        <p style="color:#777; text-align:center; padding:20px;">Loading bookings...</p>
+                    </div>
+                </div>
+
+                <div class="feedbacks-container">
+                    <h3>My Feedbacks</h3>
+                    <div id="feedback-list">
+                        <p style="color:#777; text-align:center; padding:20px;">Loading feedbacks...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-modal-overlay" id="feedbackModal" onclick="closeFeedbackModalCtx(event)">
+        <div class="feedback-modal-box">
+            <div class="modal-close" onclick="closeFeedbackModalBtn()"><i class="fas fa-times"></i></div>
+            <h3>Leave Feedback</h3>
+            <form id="feedbackForm">
+                <input type="hidden" id="f_bookingId">
+                <input type="hidden" id="f_service">
+                <input type="hidden" id="f_staff">
+                
+                <label style="color:#aaa; font-size:0.9rem;">Rate your experience (1-5)</label>
+                <select id="f_rating" class="rating-input" required>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+
+                <label style="color:#aaa; font-size:0.9rem;">Your Comment</label>
+                <textarea id="f_comment" rows="4" class="rating-input" placeholder="Tell us about your experience..." required></textarea>
+                
+                <button type="button" class="btn-book" id="submitFeedbackBtn" onclick="submitFeedback()" style="width: 100%;">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 GLAMORA HOUSE. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../js/profile.js" type="module"></script>
+</body>
+</html>

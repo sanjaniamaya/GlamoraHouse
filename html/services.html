@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GLAMORA HOUSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/services.css">
+</head>
+<body>
+
+    <div class="nav-wrapper" id="navbar">
+        <nav>
+            <a href="index.html" class="logo">GLAMORA HOUSE</a>
+            
+            <div class="nav-links" id="navLinks">
+                <div class="close-menu"><i class="fas fa-times"></i></div>
+                
+                <a href="index.html#about">About</a>
+                <a href="services.html" style="color:var(--neon-pink);">Services</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#staff">Staff</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+                
+                <a href="login.html" class="btn-login mobile-only-btn">Login</a>
+                <a href="index.html#contact" class="btn-book mobile-only-btn">Book Now</a>
+            </div>
+
+            <div class="nav-right">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="index.html#contact" class="btn-book">Book Now</a>
+            </div>
+
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+
+    <div class="page-hero">
+        <div class="page-title">
+            <h1>Our Services</h1>
+            <p>Curated Treatments For You</p>
+        </div>
+    </div>
+
+    <div class="service-grid" id="servicesContainer">
+        <div style="text-align: center; width: 100%; padding: 50px; color: #fff;">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <p class="mt-3">Loading premium services...</p>
+        </div>
+    </div>
+
+    <div class="service-modal-overlay" id="serviceModal" onclick="closeModal(event)">
+        <div class="service-modal-box">
+            <div class="modal-close" onclick="closeModalBtn()"><i class="fas fa-times"></i></div>
+            <img src="" id="modalImg" class="modal-img" alt="Service">
+            <div class="modal-content">
+                <h3 id="modalTitle">Service Title</h3>
+                <p id="modalDesc">Description goes here...</p>
+                <div class="modal-price" id="modalPrice">Rs. 0.00</div>
+                <a href="index.html#contact" class="btn-book" style="text-align:center;" onclick="closeModalBtn()">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">
+            <h2>GLAMORA</h2>
+            <p>Glamora House is more than a salon; it is a destination for transformation. 
+                We combine high-end technology with organic treatments to ensure you look and feel your absolute best. 
+                Beauty is an art, and you are our canvas.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Opening Hours</h3>
+            <div class="contact-row"><span>Mon - Sat:</span><span style="color: white;">9:00 AM - 7:00 PM</span></div>
+            <div class="contact-row"><span>Sunday:</span><span style="color: white;">10:00 AM - 5:00 PM</span></div>
+        </div>
+        <div class="copyright">© 2025 GLAMORA HOUSE. All Rights Reserved.</div>
+    </footer>
+
+    <script src="../js/services.js" type="module"></script>
+</body>
+</html>

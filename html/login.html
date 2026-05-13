@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GLAMORA HOUSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body class="animated-bg">
+
+    <div class="nav-wrapper" id="navbar">
+        <nav>
+            <a href="index.html" class="logo">GLAMORA HOUSE</a>
+            <div class="nav-links" id="navLinks">
+                <div class="close-menu" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
+                <a href="index.html#about">About</a>
+                <a href="services.html">Services</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#staff">Staff</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-right">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="index.html#contact" class="btn-book">Book Now</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Welcome Back</h2>
+            <p>Login to access your profile</p>
+
+            <div id="msg-box" class="msg-box"></div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <input type="email" id="login-email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="login-pass" placeholder="Password" required>
+                    <i class="fas fa-eye eye-icon" onclick="togglePassword('login-pass', this)"></i>
+                </div>
+                
+                <div style="text-align: right; margin-bottom: 20px; margin-top: -10px;">
+                    <a href="#" style="color: #aaa; font-size: 0.8rem; text-decoration: none;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-full">Sign In</button>
+            </form>
+
+            <div class="divider">OR CONTINUE WITH</div>
+
+            <button class="btn-google" id="googleBtn">
+                <i class="fab fa-google"></i> Sign in with Google
+            </button>
+
+            <div class="auth-links">
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GLAMORA HOUSE. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../js/login.js" type="module"></script>
+
+</body>
+</html>

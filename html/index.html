@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAMORA HOUSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+    <div class="nav-wrapper" id="navbar">
+        <nav>
+            <a href="index.html" class="logo"><b>GLAMORA HOUSE</b> </a>
+            
+            <div class="nav-links" id="navLinks">
+                <div class="close-menu"><i class="fas fa-times"></i></div>
+                <a href="#about" onclick="toggleMenu()">About</a>
+                <a href="services.html" onclick="toggleMenu()">Services</a>
+                <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+                <a href="#staff" onclick="toggleMenu()">Staff</a>
+                <a href="gallery.html" onclick="toggleMenu()">Gallery</a>
+                <a href="#contact" onclick="toggleMenu()">Contact</a>
+
+                <a href="login.html" class="btn-login mobile-only-btn">Login</a>
+                <a href="index.html#contact" class="btn-book mobile-only-btn">Book Now</a>
+            </div>
+            
+            <div class="nav-right">
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="#contact" class="btn-book">Book Now</a>
+            </div>
+            
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+    <br>
+    <header class="hero animated-bg reveal active">
+        <div class="hero-text">
+            <h1>UNVEIL <br><span>YOUR RADIANCE.</span></h1>
+            <p>Welcome to Glamora House. Where modern artistry meets timeless luxury. Let us redefine your style.</p>
+            <a href="#services" class="btn-book" style="padding: 15px 40px; font-size: 1rem;">View All Services</a>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1000" class="hero-img" alt="Glamora House Luxury">
+        </div>
+    </header>
+
+    <section id="about" class="about-section reveal">
+        <div class="about-images">
+            <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?q=80&w=800" class="about-img-1" alt="Interior">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800" class="about-img-2" alt="Model">
+        </div>
+        <div class="about-text">
+            <h2>The Essence of <span>Glamora</span></h2>
+            <p>Founded in 2025 on the belief that self-care is a necessity, not a luxury, Glamora House was established as a sanctuary for the modern individual.</p>
+            <p>Our philosophy is rooted in "Personalized Perfection." Every strand cut, every color applied, and every facial performed is a result of deep consultation.</p>
+            <p>We strictly utilize premium, globally sourced organic products to ensure that your beauty does not come at the cost of your health.</p>
+            <div class="about-stats">
+                <div class="stat"><h3>5+</h3><span>Years</span></div>
+                <div class="stat"><h3>2k+</h3><span>Clients</span></div>
+                <div class="stat"><h3>15+</h3><span>Awards</span></div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="services" class="reveal">
+        <h2 class="section-title">Popular <span>Services</span></h2>
+        <div class="service-grid" id="popularServicesContainer">
+            <div style="text-align: center; width: 100%; color: #fff;">
+                <i class="fas fa-spinner fa-spin fa-2x"></i> <p class="mt-2">Loading...</p>
+            </div>
+        </div>
+        <div class="btn-center-container">
+            <a href="services.html" class="btn-outline-large">View All Services</a>
+        </div>
+    </section>
+
+    <div class="service-modal-overlay" id="serviceModal" onclick="closeModal(event)">
+        <div class="service-modal-box">
+            <div class="modal-close" onclick="closeModalBtn()"><i class="fas fa-times"></i></div>
+            <img src="" id="modalImg" class="modal-img" alt="Service">
+            <div class="modal-content">
+                <h3 id="modalTitle">Service Title</h3>
+                <p id="modalDesc">Description goes here...</p>
+                <div class="modal-price" id="modalPrice">Rs. 0.00</div>
+                <a href="#contact" class="btn-book" style="text-align:center;" onclick="closeModalBtn()">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="pricing" class="pricing-section animated-bg reveal">
+        <h2 class="section-title">Price <span>Menu</span></h2>
+        <div class="pricing-container">
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterPrices('all')">All</button>
+                <button class="filter-btn" onclick="filterPrices('hair')">Hair</button>
+                <button class="filter-btn" onclick="filterPrices('face')">Face</button>
+                <button class="filter-btn" onclick="filterPrices('body')">Body</button>
+            </div>
+            <style>
+                #pricingRowsContainer { 
+                    max-height: 280px; 
+                    overflow-y: auto; 
+                    overflow-x: hidden; 
+                    padding-right: 15px; 
+                    margin-top: 20px;
+                }
+                #pricingRowsContainer::-webkit-scrollbar { width: 6px; }
+                #pricingRowsContainer::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+                #pricingRowsContainer::-webkit-scrollbar-thumb { background: #ff007f; border-radius: 10px; }
+                #pricingRowsContainer::-webkit-scrollbar-thumb:hover { background: #bd00ff; }
+            </style>
+            <div id="pricingRowsContainer">
+                <div style="text-align: center; width: 100%; color: #fff;">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i> <p class="mt-2">Loading Prices...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="staff" class="staff-section reveal">
+        <h2 class="section-title">Meet Our <span>Experts</span></h2>
+        
+        <div class="staff-carousel-container">
+            <div class="staff-btn prev" onclick="moveStaffSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+            
+            <div class="staff-track" id="staffTrackContainer">
+                <div style="text-align: center; width: 100%; color: #fff;">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i> <p class="mt-2">Loading Experts...</p>
+                </div>
+            </div>
+
+            <div class="staff-btn next" onclick="moveStaffSlide(1)"><i class="fas fa-chevron-right"></i></div>
+        </div>
+    </section>
+
+    <section id="gallery-preview" class="reveal" style="padding-top: 40px;">
+        <h2 class="section-title">Our <span>Masterpieces</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&auto=format&fit=crop&q=60" alt="Work 1"><div class="gallery-overlay"><h4>Creative Coloring</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800" alt="Work 2"><div class="gallery-overlay"><h4>Skin Therapy</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800" alt="Work 3"><div class="gallery-overlay"><h4>Nail Artistry</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1481068164146-e8beb686f4d2?w=500&auto=format&fit=crop&q=60" alt="Work 4"><div class="gallery-overlay"><h4>Bridal Glow</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1629397662621-0d4b8e82801f?w=500&auto=format&fit=crop&q=60" alt="Work 5"><div class="gallery-overlay"><h4>Event Makeup</h4></div></div>
+            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1661340869269-35b783ff3089?w=500&auto=format&fit=crop&q=60" alt="Work 6"><div class="gallery-overlay"><h4>Spa Relax</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560869713-bf165a9cfac1?w=500&auto=format&fit=crop&q=60" alt="Work 7"><div class="gallery-overlay"><h4>Hair Treatments</h4></div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1731514771613-991a02407132?w=500&auto=format&fit=crop&q=60" alt="Work 8"><div class="gallery-overlay"><h4>Facial Glow</h4></div></div>
+        </div>
+        <div class="btn-center-container">
+            <a href="gallery.html" class="btn-outline-large">View Full Gallery</a>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section reveal">
+        <h2 class="section-title">Client <span>Love</span></h2>
+        <div class="carousel-container" id="reviewsContainer">
+            <div style="text-align:center;color:#fff;width:100%;"><i class="fas fa-spinner fa-spin fa-2x"></i> <p>Loading Reviews...</p></div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2 class="section-title">Start Your <span>Journey</span></h2>
+        <div class="contact-grid">
+            <div id="form-container">
+                <form class="contact-form" id="bookingForm">
+    <input type="hidden" name="_subject" value="New Booking Request - GLAMORA HOUSE">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    
+    <h3>Request an Appointment</h3>
+    <p style="color:#aaa; margin-bottom:20px;">Fill out the form below. We will confirm your slot shortly.</p>
+    
+    <input type="text" id="c_name" name="Customer_Name" placeholder="Your Name" required>
+    <input type="tel" id="c_phone" name="Phone_Number" placeholder="Phone Number" required>
+    <input type="email" id="c_email" name="Email_Address" placeholder="Email Address">
+    
+    <div class="input-row">
+        <div style="position: relative; flex: 1;">
+            <input type="date" id="c_date" name="Booking_Date" required style="width: 100%;" placeholder="Select Date">
+            <i class="fas fa-calendar-alt" style="position: absolute; right: 15px; top: 15px; color: var(--neon-purple); pointer-events: none;"></i>
+        </div>
+        <div style="position: relative; flex: 1;">
+            <input type="time" id="c_time" name="Booking_Time" required style="width: 100%;" placeholder="Select Time">
+            <i class="fas fa-clock" style="position: absolute; right: 15px; top: 15px; color: var(--neon-purple); pointer-events: none;"></i>
+        </div>
+    </div>
+    
+    <select id="c_staff" name="Staff_Member" required style="margin-bottom: 20px;">
+        <option value="" disabled selected>Select Specialist</option>
+        <option value="Any">Any Available Expert</option>
+    </select>
+
+    <select id="c_service" name="Service_Requested" required>
+        <option value="" disabled selected>Select Your Service</option>
+    </select>
+
+    <textarea id="c_msg" name="Message_Requirements" rows="4" placeholder="Any specific requirements?"></textarea>
+    
+    <button class="btn-book" type="submit" style="width:100%; border:none;">Confirm Booking</button>
+</form>
+
+                <div id="success-msg">
+                    <span class="close-btn" onclick="resetForm()"><i class="fas fa-times"></i></span>
+                    <i class="fas fa-check-circle" style="font-size: 50px; color: var(--neon-purple); margin-bottom: 20px;"></i>
+                    <h3>Booking Submitted!</h3>
+                    <p style="color:#aaa;">Thank you. Your details have been sent via Email Client.</p>
+                </div>
+            </div>
+            <div class="contact-text">
+                <h3>Find Us</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31683.08058223933!2d79.845!3d6.927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25923a5d84713%3A0x2a98f5b8001d904c!2sLotus%20Rd%2C%20Colombo!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="contact-item" style="display:flex; gap:15px; margin-bottom:20px; color:#aaa; align-items:center;"><i class="fas fa-map-marker-alt" style="color:var(--neon-pink);"></i><span>Kiriberiyakele, Pitipana, Homagama</span></div>
+                <div class="contact-item" style="display:flex; gap:15px; margin-bottom:20px; color:#aaa; align-items:center;"><i class="fas fa-phone" style="color:var(--neon-pink);"></i><span>+94 77 123 4567</span></div>
+                <div class="contact-item" style="display:flex; gap:15px; margin-bottom:20px; color:#aaa; align-items:center;"><i class="fas fa-envelope" style="color:var(--neon-pink);"></i><span>info@glamora.lk</span></div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="reveal">
+        <div class="footer-brand">
+            <h2>GLAMORA</h2>
+            <p>Glamora House is more than a salon; it is a destination for transformation. We combine high-end technology with organic treatments to ensure you look and feel your absolute best. Beauty is an art, and you are our canvas.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Opening Hours</h3>
+            <div class="contact-row"><span>Mon - Sat:</span><span style="color: white;">9:00 AM - 7:00 PM</span></div>
+            <div class="contact-row"><span>Sunday:</span><span style="color: white;">10:00 AM - 5:00 PM</span></div>
+        </div>
+        <div class="copyright">© 2025 GLAMORA HOUSE. All Rights Reserved.</div>
+    </footer>
+
+    <script src="../js/index.js" type="module"></script>
+
+    
+</body>
+</html>
