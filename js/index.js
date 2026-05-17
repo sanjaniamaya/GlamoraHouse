@@ -230,12 +230,29 @@ if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
                 await addDoc(collection(db, "bookings"), bookingData);
                 console.log("Saved to Database");
 
-                // TASK 2: Send Email via FormSubmit
-                await fetch("https://formsubmit.co/ajax/dilshankasun352@gmail.com", {
-                    method: "POST",
-                    body: emailFormData
-                });
-                console.log("Email Sent");
+                // TASK 2: Send Email via FormSubmit (Non-blocking)
+                try {
+                    await fetch("https://formsubmit.co/ajax/dilshankasun352@gmail.com", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            Name: bookingData.customerName,
+                            Phone: bookingData.phone,
+                            Email: bookingData.email,
+                            Date: bookingData.date,
+                            Time: bookingData.time,
+                            Staff: bookingData.staff,
+                            Service: bookingData.service,
+                            Notes: bookingData.notes
+                        })
+                    });
+                    console.log("Email Sent");
+                } catch (emailError) {
+                    console.warn("Non-blocking Email Send Error (FormSubmit):", emailError);
+                }
                 
                 // Success UI
                 bookingForm.style.display = 'none';
